@@ -1,0 +1,366 @@
+fileFormatVersion: 2
+guid: e00036f50e75e0543b95d47e1e59fcee
+timeCreated: 1505745338
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Box002
+    100004: Box003
+    100006: Box004
+    100008: Box005
+    100010: Box006
+    100012: Box007
+    100014: Box008
+    100016: Box009
+    100018: Box010
+    100020: Box011
+    100022: Cough
+    100024: Dishwasser
+    100026: Door1
+    100028: Door2
+    100030: Door3
+    100032: Floor
+    100034: FridgeBig
+    100036: FridgeSmall
+    100038: Glass
+    100040: Glass001
+    100042: Glass002
+    100044: //RootNode
+    100046: Kitchendoor
+    100048: kitchenDown
+    100050: KitchenTable
+    100052: KitchenTable 1
+    100054: Kitchenup
+    100056: koelkastdeurboven1
+    100058: Koelkastdeuronder
+    100060: LittleDoor
+    100062: LittleDoor2
+    100064: PoolPoot
+    100066: PoolPoot 1
+    100068: PoolPoot 2
+    100070: PoolPoot 3
+    100072: PoolTable
+    100074: PoolTable 1
+    100076: rightkitchendoor
+    100078: RoundTable
+    100080: Roundtable
+    100082: smoothieBar
+    100084: Storageundertv
+    100086: Table001
+    100088: Table002
+    100090: TablePlate
+    100092: TablePlate001
+    100094: Tablepoot
+    100096: Tablepoot 1
+    100098: Tablepoot 2
+    100100: Tablepoot 3
+    100102: Tablepoot001
+    100104: Tablepoot002
+    100106: Tablepoot003
+    100108: Tablepoot004
+    100110: TableUnder
+    100112: TableUnder001
+    100114: TV
+    100116: Wall
+    100118: Wall 1
+    100120: Wall 2
+    100122: Wall 3
+    100124: WallFiller
+    400000: Box001
+    400002: Box002
+    400004: Box003
+    400006: Box004
+    400008: Box005
+    400010: Box006
+    400012: Box007
+    400014: Box008
+    400016: Box009
+    400018: Box010
+    400020: Box011
+    400022: Cough
+    400024: Dishwasser
+    400026: Door1
+    400028: Door2
+    400030: Door3
+    400032: Floor
+    400034: FridgeBig
+    400036: FridgeSmall
+    400038: Glass
+    400040: Glass001
+    400042: Glass002
+    400044: //RootNode
+    400046: Kitchendoor
+    400048: kitchenDown
+    400050: KitchenTable
+    400052: KitchenTable 1
+    400054: Kitchenup
+    400056: koelkastdeurboven1
+    400058: Koelkastdeuronder
+    400060: LittleDoor
+    400062: LittleDoor2
+    400064: PoolPoot
+    400066: PoolPoot 1
+    400068: PoolPoot 2
+    400070: PoolPoot 3
+    400072: PoolTable
+    400074: PoolTable 1
+    400076: rightkitchendoor
+    400078: RoundTable
+    400080: Roundtable
+    400082: smoothieBar
+    400084: Storageundertv
+    400086: Table001
+    400088: Table002
+    400090: TablePlate
+    400092: TablePlate001
+    400094: Tablepoot
+    400096: Tablepoot 1
+    400098: Tablepoot 2
+    400100: Tablepoot 3
+    400102: Tablepoot001
+    400104: Tablepoot002
+    400106: Tablepoot003
+    400108: Tablepoot004
+    400110: TableUnder
+    400112: TableUnder001
+    400114: TV
+    400116: Wall
+    400118: Wall 1
+    400120: Wall 2
+    400122: Wall 3
+    400124: WallFiller
+    2300000: Box001
+    2300002: Box002
+    2300004: Box003
+    2300006: Box004
+    2300008: Box005
+    2300010: Box006
+    2300012: Box007
+    2300014: Box008
+    2300016: Box009
+    2300018: Box010
+    2300020: Box011
+    2300022: Cough
+    2300024: Dishwasser
+    2300026: Door1
+    2300028: Door2
+    2300030: Door3
+    2300032: Floor
+    2300034: FridgeBig
+    2300036: FridgeSmall
+    2300038: Glass
+    2300040: Glass001
+    2300042: Glass002
+    2300044: Kitchendoor
+    2300046: kitchenDown
+    2300048: KitchenTable 1
+    2300050: Kitchenup
+    2300052: koelkastdeurboven1
+    2300054: Koelkastdeuronder
+    2300056: LittleDoor
+    2300058: LittleDoor2
+    2300060: PoolPoot
+    2300062: PoolPoot 1
+    2300064: PoolPoot 2
+    2300066: PoolPoot 3
+    2300068: PoolTable 1
+    2300070: rightkitchendoor
+    2300072: RoundTable
+    2300074: Storageundertv
+    2300076: TablePlate
+    2300078: TablePlate001
+    2300080: Tablepoot
+    2300082: Tablepoot 1
+    2300084: Tablepoot 2
+    2300086: Tablepoot 3
+    2300088: Tablepoot001
+    2300090: Tablepoot002
+    2300092: Tablepoot003
+    2300094: Tablepoot004
+    2300096: TableUnder
+    2300098: TableUnder001
+    2300100: TV
+    2300102: Wall
+    2300104: Wall 1
+    2300106: Wall 2
+    2300108: Wall 3
+    2300110: WallFiller
+    3300000: Box001
+    3300002: Box002
+    3300004: Box003
+    3300006: Box004
+    3300008: Box005
+    3300010: Box006
+    3300012: Box007
+    3300014: Box008
+    3300016: Box009
+    3300018: Box010
+    3300020: Box011
+    3300022: Cough
+    3300024: Dishwasser
+    3300026: Door1
+    3300028: Door2
+    3300030: Door3
+    3300032: Floor
+    3300034: FridgeBig
+    3300036: FridgeSmall
+    3300038: Glass
+    3300040: Glass001
+    3300042: Glass002
+    3300044: Kitchendoor
+    3300046: kitchenDown
+    3300048: KitchenTable 1
+    3300050: Kitchenup
+    3300052: koelkastdeurboven1
+    3300054: Koelkastdeuronder
+    3300056: LittleDoor
+    3300058: LittleDoor2
+    3300060: PoolPoot
+    3300062: PoolPoot 1
+    3300064: PoolPoot 2
+    3300066: PoolPoot 3
+    3300068: PoolTable 1
+    3300070: rightkitchendoor
+    3300072: RoundTable
+    3300074: Storageundertv
+    3300076: TablePlate
+    3300078: TablePlate001
+    3300080: Tablepoot
+    3300082: Tablepoot 1
+    3300084: Tablepoot 2
+    3300086: Tablepoot 3
+    3300088: Tablepoot001
+    3300090: Tablepoot002
+    3300092: Tablepoot003
+    3300094: Tablepoot004
+    3300096: TableUnder
+    3300098: TableUnder001
+    3300100: TV
+    3300102: Wall
+    3300104: Wall 1
+    3300106: Wall 2
+    3300108: Wall 3
+    3300110: WallFiller
+    4300000: TablePlate
+    4300002: Tablepoot
+    4300004: Tablepoot
+    4300006: Tablepoot
+    4300008: Tablepoot
+    4300010: TableUnder
+    4300012: PoolTable
+    4300014: PoolPoot
+    4300016: PoolPoot
+    4300018: PoolPoot
+    4300020: PoolPoot
+    4300022: KitchenTable
+    4300024: RoundTable
+    4300026: TableUnder001
+    4300028: Tablepoot001
+    4300030: Tablepoot002
+    4300032: Tablepoot003
+    4300034: Tablepoot004
+    4300036: TablePlate001
+    4300038: Box011
+    4300040: Box010
+    4300042: Box009
+    4300044: Box008
+    4300046: Box007
+    4300048: Box006
+    4300050: Box005
+    4300052: Box004
+    4300054: Box003
+    4300056: Box002
+    4300058: Box001
+    4300060: Floor
+    4300062: Wall
+    4300064: Wall
+    4300066: Wall
+    4300068: Wall
+    4300070: kitchenDown
+    4300072: Kitchenup
+    4300074: WallFiller
+    4300076: FridgeBig
+    4300078: FridgeSmall
+    4300080: Door1
+    4300082: Door2
+    4300084: Door3
+    4300086: Kitchendoor
+    4300088: rightkitchendoor
+    4300090: Cough
+    4300092: Storageundertv
+    4300094: TV
+    4300096: Dishwasser
+    4300098: LittleDoor
+    4300100: LittleDoor2
+    4300102: Koelkastdeuronder
+    4300104: koelkastdeurboven1
+    4300106: Glass
+    4300108: Glass001
+    4300110: Glass002
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

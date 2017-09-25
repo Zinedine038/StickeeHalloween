@@ -1,0 +1,311 @@
+fileFormatVersion: 2
+guid: 04211e19b45782740ad66115a845ebd4
+timeCreated: 1505741229
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Box002
+    100004: Box003
+    100006: Box004
+    100008: Box005
+    100010: Box006
+    100012: Box007
+    100014: Box008
+    100016: Box009
+    100018: Box010
+    100020: Box011
+    100022: Couch(Place)
+    100024: Door1
+    100026: Door2
+    100028: Door3
+    100030: Floor
+    100032: FridgeBig
+    100034: FridgeSmall
+    100036: //RootNode
+    100038: kitchenDown
+    100040: KitchenTable
+    100042: KitchenTable 1
+    100044: Kitchenup
+    100046: PoolPoot
+    100048: PoolPoot 1
+    100050: PoolPoot 2
+    100052: PoolPoot 3
+    100054: PoolTable
+    100056: PoolTable 1
+    100058: RoundTable
+    100060: Roundtable
+    100062: SmallMiddelWall
+    100064: smoothieBar
+    100066: Table001
+    100068: Table002
+    100070: TablePlate
+    100072: TablePlate001
+    100074: Tablepoot
+    100076: Tablepoot 1
+    100078: Tablepoot 2
+    100080: Tablepoot 3
+    100082: Tablepoot001
+    100084: Tablepoot002
+    100086: Tablepoot003
+    100088: Tablepoot004
+    100090: TableUnder
+    100092: TableUnder001
+    100094: Wall
+    100096: Wall 1
+    100098: Wall 2
+    100100: Wall 3
+    100102: WallFiller
+    400000: Box001
+    400002: Box002
+    400004: Box003
+    400006: Box004
+    400008: Box005
+    400010: Box006
+    400012: Box007
+    400014: Box008
+    400016: Box009
+    400018: Box010
+    400020: Box011
+    400022: Couch(Place)
+    400024: Door1
+    400026: Door2
+    400028: Door3
+    400030: Floor
+    400032: FridgeBig
+    400034: FridgeSmall
+    400036: //RootNode
+    400038: kitchenDown
+    400040: KitchenTable
+    400042: KitchenTable 1
+    400044: Kitchenup
+    400046: PoolPoot
+    400048: PoolPoot 1
+    400050: PoolPoot 2
+    400052: PoolPoot 3
+    400054: PoolTable
+    400056: PoolTable 1
+    400058: RoundTable
+    400060: Roundtable
+    400062: SmallMiddelWall
+    400064: smoothieBar
+    400066: Table001
+    400068: Table002
+    400070: TablePlate
+    400072: TablePlate001
+    400074: Tablepoot
+    400076: Tablepoot 1
+    400078: Tablepoot 2
+    400080: Tablepoot 3
+    400082: Tablepoot001
+    400084: Tablepoot002
+    400086: Tablepoot003
+    400088: Tablepoot004
+    400090: TableUnder
+    400092: TableUnder001
+    400094: Wall
+    400096: Wall 1
+    400098: Wall 2
+    400100: Wall 3
+    400102: WallFiller
+    2300000: Box001
+    2300002: Box002
+    2300004: Box003
+    2300006: Box004
+    2300008: Box005
+    2300010: Box006
+    2300012: Box007
+    2300014: Box008
+    2300016: Box009
+    2300018: Box010
+    2300020: Box011
+    2300022: Couch(Place)
+    2300024: Door1
+    2300026: Door2
+    2300028: Door3
+    2300030: Floor
+    2300032: FridgeBig
+    2300034: FridgeSmall
+    2300036: kitchenDown
+    2300038: KitchenTable 1
+    2300040: Kitchenup
+    2300042: PoolPoot
+    2300044: PoolPoot 1
+    2300046: PoolPoot 2
+    2300048: PoolPoot 3
+    2300050: PoolTable 1
+    2300052: RoundTable
+    2300054: SmallMiddelWall
+    2300056: TablePlate
+    2300058: TablePlate001
+    2300060: Tablepoot
+    2300062: Tablepoot 1
+    2300064: Tablepoot 2
+    2300066: Tablepoot 3
+    2300068: Tablepoot001
+    2300070: Tablepoot002
+    2300072: Tablepoot003
+    2300074: Tablepoot004
+    2300076: TableUnder
+    2300078: TableUnder001
+    2300080: Wall
+    2300082: Wall 1
+    2300084: Wall 2
+    2300086: Wall 3
+    2300088: WallFiller
+    3300000: Box001
+    3300002: Box002
+    3300004: Box003
+    3300006: Box004
+    3300008: Box005
+    3300010: Box006
+    3300012: Box007
+    3300014: Box008
+    3300016: Box009
+    3300018: Box010
+    3300020: Box011
+    3300022: Couch(Place)
+    3300024: Door1
+    3300026: Door2
+    3300028: Door3
+    3300030: Floor
+    3300032: FridgeBig
+    3300034: FridgeSmall
+    3300036: kitchenDown
+    3300038: KitchenTable 1
+    3300040: Kitchenup
+    3300042: PoolPoot
+    3300044: PoolPoot 1
+    3300046: PoolPoot 2
+    3300048: PoolPoot 3
+    3300050: PoolTable 1
+    3300052: RoundTable
+    3300054: SmallMiddelWall
+    3300056: TablePlate
+    3300058: TablePlate001
+    3300060: Tablepoot
+    3300062: Tablepoot 1
+    3300064: Tablepoot 2
+    3300066: Tablepoot 3
+    3300068: Tablepoot001
+    3300070: Tablepoot002
+    3300072: Tablepoot003
+    3300074: Tablepoot004
+    3300076: TableUnder
+    3300078: TableUnder001
+    3300080: Wall
+    3300082: Wall 1
+    3300084: Wall 2
+    3300086: Wall 3
+    3300088: WallFiller
+    4300000: TablePlate
+    4300002: Tablepoot
+    4300004: Tablepoot
+    4300006: Tablepoot
+    4300008: Tablepoot
+    4300010: TableUnder
+    4300012: PoolTable
+    4300014: PoolPoot
+    4300016: PoolPoot
+    4300018: PoolPoot
+    4300020: PoolPoot
+    4300022: KitchenTable
+    4300024: RoundTable
+    4300026: TableUnder001
+    4300028: Tablepoot001
+    4300030: Tablepoot002
+    4300032: Tablepoot003
+    4300034: Tablepoot004
+    4300036: TablePlate001
+    4300038: Box011
+    4300040: Box010
+    4300042: Box009
+    4300044: Box008
+    4300046: Box007
+    4300048: Box006
+    4300050: Box005
+    4300052: Box004
+    4300054: Box003
+    4300056: Box002
+    4300058: Box001
+    4300060: Floor
+    4300062: Wall
+    4300064: Wall
+    4300066: Wall
+    4300068: Wall
+    4300070: Couch(Place)
+    4300072: kitchenDown
+    4300074: Kitchenup
+    4300076: WallFiller
+    4300078: SmallMiddelWall
+    4300080: FridgeBig
+    4300082: FridgeSmall
+    4300084: Door1
+    4300086: Door2
+    4300088: Door3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

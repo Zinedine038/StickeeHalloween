@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Stickee.unity
+  isLoaded: 1
+  isActive: 1
