@@ -16,6 +16,7 @@ public class Ripper : VRTK_InteractableObject {
 	public override void OnInteractableObjectGrabbed (InteractableObjectEventArgs e)
 	{
 		base.OnInteractableObjectGrabbed (e);
+        print(e.interactingObject.transform);
 		StopAllCoroutines ();
 		StartCoroutine (RampUpSpeed ());
 	}
