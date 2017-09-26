@@ -223,6 +223,8 @@ namespace VRTK
 
         public virtual void OnInteractableObjectGrabbed(InteractableObjectEventArgs e)
         {
+            transform.position = e.interactingObject.gameObject.transform.position;
+            transform.eulerAngles = e.interactingObject.transform.eulerAngles + new Vector3(-90, 0, 90);
             if (InteractableObjectGrabbed != null)
             {
                 InteractableObjectGrabbed(this, e);
@@ -558,8 +560,6 @@ namespace VRTK
         {
             if (!IsGrabbed() && !snappedInSnapDropZone)
             {
-                transform.position = Vector3.zero;
-                transform.eulerAngles = Vector3.zero;
                 previousParent = transform.parent;
                 if (!IsSwappable())
                 {
@@ -1088,9 +1088,6 @@ namespace VRTK
         protected virtual Transform CreateAttachPoint(string namePrefix, string nameSuffix, Transform origin)
         {
             Transform attachPoint = new GameObject(VRTK_SharedMethods.GenerateVRTKObjectName(true, namePrefix, nameSuffix, "Controller", "AttachPoint")).transform;
-            attachPoint.parent = transform;
-            attachPoint.position = origin.position;
-            attachPoint.rotation = origin.rotation;
             return attachPoint;
         }
 
