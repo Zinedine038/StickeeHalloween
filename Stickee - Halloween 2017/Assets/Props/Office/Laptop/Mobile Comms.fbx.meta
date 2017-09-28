@@ -4,9 +4,24 @@ timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
+    100000: Comms__Dish
+    100002: FlightCase
+    100004: Laptop
+    100006: //RootNode
+    400000: Comms__Dish
+    400002: FlightCase
+    400004: Laptop
+    400006: //RootNode
+    2300000: Comms__Dish
+    2300002: FlightCase
+    2300004: Laptop
+    3300000: Comms__Dish
+    3300002: FlightCase
+    3300004: Laptop
     4300000: Laptop
     4300002: FlightCase
     4300004: Comms__Dish
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
