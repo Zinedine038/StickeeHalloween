@@ -44,7 +44,8 @@ public class Sliceable : MonoBehaviour, ISliceable
 	{
 		AbstractSliceHandler[] handlers = gameObject.GetComponents<AbstractSliceHandler>();
 		print ("slice");
-		foreach(AbstractSliceHandler handler in handlers)
+        transform.gameObject.AddComponent<FadeZombie>();
+        foreach (AbstractSliceHandler handler in handlers)
 		{
 			handler.handleSlice(results);
 		}
