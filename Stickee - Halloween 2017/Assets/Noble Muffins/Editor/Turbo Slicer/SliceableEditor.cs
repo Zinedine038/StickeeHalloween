@@ -15,6 +15,7 @@ public class SliceableEditor : Editor
 	SerializedProperty channelTangentsProperty;
 	SerializedProperty channelUV2Property;
 	SerializedProperty shreddableProperty;
+    SerializedProperty rb;
 	
 	public void OnEnable()
 	{
@@ -25,6 +26,7 @@ public class SliceableEditor : Editor
 		channelTangentsProperty = serializedObject.FindProperty("channelTangents");
 		channelUV2Property = serializedObject.FindProperty("channelUV2");
 		shreddableProperty = serializedObject.FindProperty("shreddable");
+        rb = serializedObject.FindProperty("rb");
 	}
 	
 	public override void OnInspectorGUI ()
@@ -52,8 +54,10 @@ public class SliceableEditor : Editor
 		EditorGUILayout.PropertyField(refreshCollidersProperty, new GUIContent("Refresh colliders"));
 		EditorGUILayout.PropertyField(alternatePrefabProperty, new GUIContent("Alternate prefab"));
 		EditorGUILayout.PropertyField(shreddableProperty, new GUIContent("Shreddable"));
+        EditorGUILayout.PropertyField(rb, new GUIContent("RigidBody"));
 
-		bool atLeastSomeHaveAlternatePrefab = alternatePrefabProperty.hasMultipleDifferentValues || alternatePrefabProperty.objectReferenceValue != null;
+
+        bool atLeastSomeHaveAlternatePrefab = alternatePrefabProperty.hasMultipleDifferentValues || alternatePrefabProperty.objectReferenceValue != null;
 
 		if(atLeastSomeHaveAlternatePrefab)
 			EditorGUILayout.PropertyField(alwaysCloneFromAlternateProperty, new GUIContent("Always clone from alternate"));

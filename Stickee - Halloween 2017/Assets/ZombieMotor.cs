@@ -19,11 +19,19 @@ public class ZombieMotor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Vector3.Distance(transform.position,player.transform.position)<=2)
+        nav.updateRotation=true;
+        if (Vector3.Distance(transform.position,player.transform.position)<=1)
         {
+            nav.speed=0;
+            animator.SetFloat("Speed",Mathf.Lerp(animator.GetFloat("Speed"),0,1*Time.deltaTime));
             Attack();
         }
-	}
+        else
+        {
+            nav.speed = speed;
+            nav.SetDestination(player.transform.position);
+        }
+    }
 
     IEnumerator IncreaseMotorSpeed(float newSpeed)
     {
