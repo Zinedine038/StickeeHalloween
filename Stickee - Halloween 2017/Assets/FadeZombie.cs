@@ -7,7 +7,7 @@ public class FadeZombie : MonoBehaviour {
     [SerializeField] public float fadePerSecond = 0.5f;
     bool mayFade = false;
 
-    private void Awake()
+    private void OnEnable()
     {
         StartCoroutine("WaitForFade");
     }
@@ -27,6 +27,6 @@ public class FadeZombie : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         mayFade=true;
-        Destroy(gameObject,5f);
+        Destroy(this.gameObject.transform.parent.gameObject,5f);
     }
 }

@@ -7,7 +7,10 @@ using NobleMuffins.TurboSlicer.Guts;
 [DisallowMultipleComponent]
 public class Sliceable : MonoBehaviour, ISliceable
 {
-	public bool currentlySliceable = true;
+    [SerializeField]
+    public Rigidbody rb;
+
+    public bool currentlySliceable = true;
 	public bool refreshColliders = true;
 	public InfillConfiguration[] infillers = new InfillConfiguration[0];
 	public bool channelNormals = true;
@@ -16,7 +19,6 @@ public class Sliceable : MonoBehaviour, ISliceable
 	public bool shreddable = true;
 	public UnityEngine.Object alternatePrefab = null;
 	public bool alwaysCloneFromAlternate = false;
-
 	public event EventHandler<SliceEventArgs> Sliced;
 
 	public void RaiseSliced(params GameObject[] parts) {
@@ -42,8 +44,8 @@ public class Sliceable : MonoBehaviour, ISliceable
 	
 	public void handleSlice( GameObject[] results )
 	{
+        rb.constraints = RigidbodyConstraints.None;
 		AbstractSliceHandler[] handlers = gameObject.GetComponents<AbstractSliceHandler>();
-		print ("slice");
         transform.gameObject.AddComponent<FadeZombie>();
         foreach (AbstractSliceHandler handler in handlers)
 		{

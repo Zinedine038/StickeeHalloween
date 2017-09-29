@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections.Generic;
 
 namespace NobleMuffins.TurboSlicer
@@ -58,7 +59,8 @@ namespace NobleMuffins.TurboSlicer
                 if (sliceable != null)
                 {
                     instantiatedBlood = Instantiate(blood,transform.position, Quaternion.Euler((transform.rotation.eulerAngles + new Vector3(90,0,0)))  );
-                    print("entry");
+                    other.gameObject.GetComponent<Rigidbody>().constraints=RigidbodyConstraints.None;
+                    other.gameObject.GetComponent<FadeZombie>().enabled=true;
                     Vector3 point = other.ClosestPointOnBounds(positionInWorldSpace);
 
                     pendingSlices.Enqueue(new PendingSlice(point, sliceable));
@@ -105,10 +107,12 @@ namespace NobleMuffins.TurboSlicer
                 if (other.gameObject.transform.parent != null)
                 {
                     GameObject otherParent = other.gameObject.transform.parent.gameObject;
+                    print(otherParent);
                     if (otherParent.GetComponent<Animator>() != null)
                     {
-                        otherParent.GetComponent<Animator>().speed = 0;
-                        otherParent.GetComponent<TestWalk>().speed = 0;
+                        Destroy(otherParent.GetComponent<Animator>());
+                        Destroy(otherParent.GetComponent<ZombieMotor>());
+                        otherParent.GetComponent<NavMeshAgent>().speed=0;
                     }
                 }
                 other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
