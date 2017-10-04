@@ -136,7 +136,6 @@ namespace NobleMuffins.TurboSlicer
 					MeshSnapshot snapshot;
 
 					if (preloadedMeshes.TryGetValue (mesh.GetInstanceID (), out snapshot) == false) {
-
 						if(mesh.isReadable == false) {
 							Debug.LogErrorFormat(subject, "Turbo Slicer needs to read mesh '{0}' on object '{1}', but cannot. If this object is " +
 								"an original, go to its mesh and enable readability. If this object is a slice result, go to the " +
