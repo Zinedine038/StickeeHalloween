@@ -10,13 +10,11 @@ public class ZombieMotor : MonoBehaviour {
     public float speed;
     public float stoppingDistance = 2;
     private bool mayAttack = true;
-    public SkinnedMeshRenderer skin;
     // Use this for initialization
     void Start () {
 		nav.SetDestination(player.transform.position);
         nav.speed=speed;    
         animator.SetFloat("Speed",speed);
-        print(skin.sharedMesh.isReadable);
 	}
 	
 	// Update is called once per frame
