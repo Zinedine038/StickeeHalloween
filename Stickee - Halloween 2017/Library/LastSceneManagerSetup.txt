@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/backup.unity
+- path: Assets/Player/SliceTest.unity
   isLoaded: 1
   isActive: 1

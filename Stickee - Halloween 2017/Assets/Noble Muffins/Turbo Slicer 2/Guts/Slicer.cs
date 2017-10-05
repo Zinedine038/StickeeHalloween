@@ -58,9 +58,11 @@ namespace NobleMuffins.TurboSlicer
 
                 if (sliceable != null)
                 {
+                    Destroy(other.transform.parent.GetComponent<ZombieMotor>());
+                    Destroy(other.transform.parent.gameObject.GetComponent<Animator>());
                     instantiatedBlood = Instantiate(blood,transform.position, Quaternion.Euler((transform.rotation.eulerAngles + new Vector3(90,0,0)))  );
                     other.gameObject.GetComponent<Rigidbody>().constraints=RigidbodyConstraints.None;
-                    other.gameObject.GetComponent<FadeZombie>().enabled=true;
+                    //other.gameObject.GetComponent<FadeZombie>().enabled=true;
                     Vector3 point = other.ClosestPointOnBounds(positionInWorldSpace);
 
                     pendingSlices.Enqueue(new PendingSlice(point, sliceable));
