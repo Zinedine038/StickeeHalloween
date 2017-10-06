@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+using System;
 
 public class ZombieMotor : MonoBehaviour {
     public Animator animator;
@@ -10,8 +11,11 @@ public class ZombieMotor : MonoBehaviour {
     public float speed;
     public float stoppingDistance = 2;
     private bool mayAttack = true;
+    public float attackSpeed = 2.633f;
+    public int damage;
     // Use this for initialization
     void Start () {
+        player = GameManager.instance.player;
 		nav.SetDestination(player.transform.position);
         nav.speed=speed;    
         animator.SetFloat("Speed",speed);
@@ -19,6 +23,7 @@ public class ZombieMotor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         nav.updateRotation=true;
         if (Vector3.Distance(transform.position,player.transform.position)<=stoppingDistance)
         {
@@ -65,8 +70,14 @@ public class ZombieMotor : MonoBehaviour {
     {
         mayAttack=false;
         animator.SetTrigger("Attack");
-        yield return new WaitForSeconds(2.633f);
-        //hpdown
+        StartCoroutine(GetDamage());
+        yield return new WaitForSeconds(attackSpeed);
         mayAttack=true;
+    }
+
+    private IEnumerator GetDamage()
+    {
+        yield return new WaitForSeconds(1f);
+        //PlayerGetDamagebruh
     }
 }

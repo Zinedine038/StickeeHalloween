@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Player/SliceTest.unity
+- path: Assets/Stickee.unity
   isLoaded: 1
   isActive: 1

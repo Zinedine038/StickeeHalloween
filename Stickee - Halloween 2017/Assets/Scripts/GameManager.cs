@@ -5,43 +5,54 @@ using DG.Tweening;
 using UnityEngine.UI;
 
 
-public class GameManager : MonoBehaviour {
-	private bool horror = false;
-	public CanvasGroup fadeToBlack;
-	public GameObject scaryScene, normalScene;
-	// Update is called once per frame
-	void Update () 
-	{
+public class GameManager : MonoBehaviour
+{
+    #region SingleTon
+    public static GameManager instance;
+    private void Awake()
+    {
+        instance=this;
+    }
+    #endregion
 
-		if (Input.GetKeyDown (KeyCode.H)) 
-		{
-			StartCoroutine(SwitchScene());
-		}
-	}
+    public Difficulty difficulty;
+    public ParticleSystem roofParticle;
+    public GameObject roofLight;
+    public AudioClip roofSound;
+    public AudioSource source;
+    public SpawnManager spawnManager;
+    public GameObject player;
 
+    public Rigidbody doorRB;
+    public Collider doorCollider;
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(UnlockGroundZombies());
+        }
+    }
 
-	private IEnumerator SwitchScene()
-	{
-		horror = !horror;
-		if (horror) 
-		{
-			fadeToBlack.DOFade (1, 1f);
-			yield return new WaitForSeconds (1f);
-			normalScene.SetActive (false);
-			scaryScene.SetActive (true);
-			fadeToBlack.DOFade (0, 1f);
-		} 
-		else 
-		{
-			fadeToBlack.DOFade (1, 1f);
-			yield return new WaitForSeconds (1f);
-			scaryScene.SetActive (false);
-			normalScene.SetActive (true);
-			fadeToBlack.DOFade (0, 1f);
-		}
-	}
+    public IEnumerator UnlockRoofZombie()
+    {
+        source.PlayOneShot(roofSound);
+        roofParticle.Play();
+        yield return new WaitForSeconds(0.15f);
+        roofLight.AddComponent<Rigidbody>();
+        yield return new WaitForSeconds(1);
+        spawnManager.roofSpawnUnlocked=true;
+        Destroy(roofLight,1f);
+        spawnManager.roofSpawnUnlocked=true;
+        spawnManager.Spawn(difficulty,spawnManager.spawnPointRoof);
+    }
 
-
+    public IEnumerator UnlockGroundZombies()
+    {
+        doorRB.useGravity=true;
+        yield return new WaitForSeconds(2f);
+        doorCollider.enabled=false;
+        spawnManager.crawlerSpawnUnlocked=true;
+    }
 
 }

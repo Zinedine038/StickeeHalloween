@@ -10,13 +10,6 @@ public class RagdollZombie : MonoBehaviour
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeToRegularMesh();
-        }
-	}
 
     public void ChangeToRegularMesh(bool burst = false)
     {
