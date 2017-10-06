@@ -58,11 +58,8 @@ namespace NobleMuffins.TurboSlicer
 
                 if (sliceable != null)
                 {
-                    Destroy(other.transform.parent.GetComponent<ZombieMotor>());
-                    Destroy(other.transform.parent.gameObject.GetComponent<Animator>());
+                    other.transform.parent.GetComponent<RagdollZombie>().ChangeToRegularMesh();
                     instantiatedBlood = Instantiate(blood,transform.position, Quaternion.Euler((transform.rotation.eulerAngles + new Vector3(90,0,0)))  );
-                    other.gameObject.GetComponent<Rigidbody>().constraints=RigidbodyConstraints.None;
-                    //other.gameObject.GetComponent<FadeZombie>().enabled=true;
                     Vector3 point = other.ClosestPointOnBounds(positionInWorldSpace);
 
                     pendingSlices.Enqueue(new PendingSlice(point, sliceable));
@@ -108,14 +105,14 @@ namespace NobleMuffins.TurboSlicer
                 }
                 if (other.gameObject.transform.parent != null)
                 {
-                    GameObject otherParent = other.gameObject.transform.parent.gameObject;
-                    print(otherParent);
-                    if (otherParent.GetComponent<Animator>() != null)
-                    {
-                        Destroy(otherParent.GetComponent<Animator>());
-                        Destroy(otherParent.GetComponent<ZombieMotor>());
-                        otherParent.GetComponent<NavMeshAgent>().speed=0;
-                    }
+                    //GameObject otherParent = other.gameObject.transform.parent.gameObject;
+                    //print(otherParent);
+                    //if (otherParent.GetComponent<Animator>() != null)
+                    //{
+                    //    Destroy(otherParent.GetComponent<Animator>());
+                    //    Destroy(otherParent.GetComponent<ZombieMotor>());
+                    //    otherParent.GetComponent<NavMeshAgent>().speed=0;
+                    //}
                 }
                 other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             }

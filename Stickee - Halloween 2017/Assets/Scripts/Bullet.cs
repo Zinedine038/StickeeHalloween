@@ -29,10 +29,13 @@ public class Bullet : MonoBehaviour {
 	private void Explode()
 	{
 		Vector3 explosionPos = transform.position;
-		Collider[] colliders = Physics.OverlapSphere(explosionPos, 5);
+		Collider[] colliders = Physics.OverlapSphere(explosionPos, 3);
 		foreach (Collider hit in colliders) {
+            if(hit.transform.tag=="BodyPart")
+            {
+                hit.transform.parent.GetComponent<RagdollZombie>().ChangeToRegularMesh();
+            }
 			Rigidbody rb = hit.GetComponent<Rigidbody>();
-
 			if (rb != null)
 				rb.AddExplosionForce(300, explosionPos, 5, 3.0F);
 
