@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RagdollZombie : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class RagdollZombie : MonoBehaviour
         if(!isRegularMesh)
         {
             Destroy(GetComponent<ZombieMotor>());
+            Destroy(GetComponent<NavMeshAgent>());
             Destroy(GetComponent<Animator>());
             isRegularMesh = true;
             foreach (SkinnedMeshRenderer skin in GetComponentsInChildren<SkinnedMeshRenderer>())
@@ -35,9 +37,11 @@ public class RagdollZombie : MonoBehaviour
                 
                 renderer.sharedMaterial=material;
                 filter.sharedMesh = mesh;
-                
-                print(meshObj.GetComponent<Rigidbody>());
+                meshObj.GetComponent<BodyPart>().isDead=true;
                 RagDoll(meshObj.GetComponent<Rigidbody>());
+                Destroy(meshObj.GetComponent<Sliceable>(),1.5f);
+                Destroy(meshObj.GetComponent<Collider>(),1.5f);
+                Destroy(meshObj,3f);
             }
         }
     }

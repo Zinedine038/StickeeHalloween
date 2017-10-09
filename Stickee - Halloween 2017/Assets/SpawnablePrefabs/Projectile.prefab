@@ -219,6 +219,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3301d1fa9a3c8d04abbece751826488c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 50
   speed: 30
-  explosion: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 2}
-  explosionSfx: {fileID: 8300000, guid: f052b9cd6b946d84bb80aadb7db264e3, type: 3}
+  woodParticle: {fileID: 1362421307827500, guid: d82ee7cd3209fdf4391211a12f48c552,
+    type: 2}
+  woodSFX: {fileID: 8300000, guid: 8956f8b2ebed0f34f962b1a6b7afe529, type: 3}
+  bloodSFX: {fileID: 8300000, guid: 41682b3d4b71ddb4e92cc139982f0181, type: 3}
+  bloodParticle: {fileID: 1392591182638350, guid: e97ba47bbe924c1419b8e9b4eb9aa4e1,
+    type: 2}

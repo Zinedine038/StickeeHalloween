@@ -1526,3 +1526,5 @@ MonoBehaviour:
   vrtkInteract: {fileID: 114212421267810296}
   gunShot: {fileID: 8300000, guid: e6bd17bd51fdfee4387f68a3ca2bd169, type: 3}
   anim: {fileID: 95520692830973420}
+  maxClip: 8
+  reloadSound: {fileID: 8300000, guid: fda35186d07291044b11528aeaa509d6, type: 3}

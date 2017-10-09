@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VRTK;
@@ -11,9 +12,16 @@ public class NerfGun : MonoBehaviour {
 	private AudioSource source;
 	public AudioClip gunShot;
     public Animator anim;
-	// Use this for initialization
-	void Start () 
+
+    private int curClip;
+    public int maxClip = 8;
+    bool empty = false;
+    public AudioClip reloadSound;
+
+    // Use this for initialization
+    void Start () 
 	{
+        curClip=maxClip;
 		source = GetComponent<AudioSource> ();
 		vrtkInteract.InteractableObjectUsed += Fire;
 	}
@@ -22,8 +30,27 @@ public class NerfGun : MonoBehaviour {
 
 	public void Fire(object o, InteractableObjectEventArgs e)
 	{
-        anim.SetTrigger("Fire");
-		source.PlayOneShot (gunShot);
-		Instantiate (bullet, firePoint.transform.position, firePoint.transform.rotation);
+        if(!empty)
+        {
+            anim.SetTrigger("Fire");
+            source.PlayOneShot(gunShot);
+            Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            curClip--;
+            if(curClip==0)
+            {
+                empty=true;
+                StartCoroutine(Reload());
+            }
+        }
+
 	}
+
+    private IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(0.5f);
+        source.PlayOneShot(reloadSound);
+        yield return new WaitForSeconds(1.5f);
+        empty=false;
+        curClip=maxClip;
+    }
 }

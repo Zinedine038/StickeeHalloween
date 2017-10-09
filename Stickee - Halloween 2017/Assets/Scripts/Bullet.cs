@@ -3,43 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
+    public int damage = 50;
 	public float speed;
-	public GameObject explosion;
-	public AudioClip explosionSfx;
-	// Use this for initialization
-	void Start () {
+	public GameObject woodParticle;
+	public AudioClip woodSFX;
+    public AudioClip bloodSFX;
+    public GameObject bloodParticle;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		transform.position += transform.forward * Time.deltaTime * speed;
-	}
+    }
 
-	void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
 	{
-		GameObject newExplosion = (GameObject) Instantiate (explosion, transform.position, other.transform.rotation);
-		AudioSource source = newExplosion.AddComponent<AudioSource> ();
-		source.PlayOneShot (explosionSfx);
-		Explode ();
-		Destroy (newExplosion, 2);
-		Destroy (gameObject);
-	}
+		GameObject impactParticle;
+        Destroy(gameObject);
+        if (other.gameObject.transform.tag=="BodyPart" && !other.gameObject.GetComponent<BodyPart>().isDead)
+        {
+            impactParticle = Instantiate(bloodParticle, transform.position, other.transform.rotation);
+            AudioSource source = impactParticle.AddComponent<AudioSource>();
+            source.PlayOneShot(bloodSFX);
+            other.transform.parent.GetComponent<ZombieMotor>().TakeDamage(damage);
+        }
+        else
+        {
+            impactParticle = Instantiate(woodParticle, transform.position, other.transform.rotation);
+            //AudioSource source = impactParticle.AddComponent<AudioSource>();
+            //source.PlayOneShot(woodSFX);
+        }
 
-	private void Explode()
-	{
-		Vector3 explosionPos = transform.position;
-		Collider[] colliders = Physics.OverlapSphere(explosionPos, 3);
-		foreach (Collider hit in colliders) {
-            if(hit.transform.tag=="BodyPart")
-            {
-                hit.transform.parent.GetComponent<RagdollZombie>().ChangeToRegularMesh();
-            }
-			Rigidbody rb = hit.GetComponent<Rigidbody>();
-			if (rb != null)
-				rb.AddExplosionForce(300, explosionPos, 5, 3.0F);
-
-		}
-
+		Destroy (impactParticle, 2);
 	}
 }

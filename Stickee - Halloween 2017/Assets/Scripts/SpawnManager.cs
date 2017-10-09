@@ -191,6 +191,7 @@ public class SpawnManager : MonoBehaviour
     private void SpawnExtremeZombie(ZombieStats stats, Transform location)
     {
         ZombieMotor zm = normalZombie.GetComponent<ZombieMotor>();
+        zm.health = stats.health;
         zm.speed = DecideMotorSpeed(stats.startingSpeed, stats.maxSpeed);
         zm.damage = stats.damage;
         zm.attackSpeed = stats.attackInterval;
@@ -211,6 +212,7 @@ public class SpawnManager : MonoBehaviour
     private void SpawnHardZombie(ZombieStats stats, Transform location)
     {
         ZombieMotor zm = normalZombie.GetComponent<ZombieMotor>();
+        zm.health = stats.health;
         zm.speed = DecideMotorSpeed(stats.startingSpeed, stats.maxSpeed);
         zm.damage = stats.damage;
         zm.attackSpeed = stats.attackInterval;
@@ -227,6 +229,7 @@ public class SpawnManager : MonoBehaviour
     private void SpawnAvarageZombie(ZombieStats stats, Transform location)
     {
         ZombieMotor zm = normalZombie.GetComponent<ZombieMotor>();
+        zm.health = stats.health;
         zm.speed = DecideMotorSpeed(stats.startingSpeed,stats.maxSpeed);
         zm.damage = stats.damage;
         zm.attackSpeed = stats.attackInterval;
@@ -299,6 +302,7 @@ public class SpawnManager : MonoBehaviour
     [System.Serializable]
 public class ZombieStats
 {
+    public int health = 100;
     public float startingSpeed;
     public float maxSpeed;
     public int damage;

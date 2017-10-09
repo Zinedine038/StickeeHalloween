@@ -13,12 +13,15 @@ public class ZombieMotor : MonoBehaviour {
     private bool mayAttack = true;
     public float attackSpeed = 2.633f;
     public int damage;
+    public int health;
     // Use this for initialization
     void Start () {
         player = GameManager.instance.player;
 		nav.SetDestination(player.transform.position);
         nav.speed=speed;    
         animator.SetFloat("Speed",speed);
+        print(health);
+
 	}
 	
 	// Update is called once per frame
@@ -73,6 +76,17 @@ public class ZombieMotor : MonoBehaviour {
         StartCoroutine(GetDamage());
         yield return new WaitForSeconds(attackSpeed);
         mayAttack=true;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        health-=dmg;
+        print(health);
+        if(health<=0)
+        {
+
+            GetComponent<RagdollZombie>().ChangeToRegularMesh();
+        }
     }
 
     private IEnumerator GetDamage()

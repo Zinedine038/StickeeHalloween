@@ -1924,10 +1924,11 @@ MonoBehaviour:
   animator: {fileID: 95154240227976846}
   nav: {fileID: 195868127058183160}
   player: {fileID: 0}
-  speed: 0.3
+  speed: 1.1121634
   stoppingDistance: 1.5
   attackSpeed: 2.633
-  damage: 0
+  damage: 20
+  health: 100
 --- !u!114 &114066695825439378
 MonoBehaviour:
   m_ObjectHideFlags: 1

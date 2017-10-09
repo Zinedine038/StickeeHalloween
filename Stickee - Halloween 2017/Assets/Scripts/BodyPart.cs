@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BodyPart : MonoBehaviour
 {
-
+    public bool isDead = false;
     void OnCollisionEnter(Collision collision)
     {
 
