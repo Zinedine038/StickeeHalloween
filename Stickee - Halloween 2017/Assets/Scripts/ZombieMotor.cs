@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using UnityEngine;
 using System;
 
+
 public class ZombieMotor : MonoBehaviour {
     public Animator animator;
     public NavMeshAgent nav;
@@ -14,6 +15,7 @@ public class ZombieMotor : MonoBehaviour {
     public float attackSpeed = 2.633f;
     public int damage;
     public int health;
+    public AudioSource source;
     // Use this for initialization
     void Start () {
         player = GameManager.instance.player;
@@ -21,11 +23,22 @@ public class ZombieMotor : MonoBehaviour {
         nav.speed=speed;    
         animator.SetFloat("Speed",speed);
         print(health);
+        source = gameObject.AddComponent<AudioSource>();
+        StartCoroutine(RandomMoans());
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private IEnumerator RandomMoans()
+    {
+        while(true)
+        {
+            source.PlayOneShot(ZombieSounds.instance.moans[(UnityEngine.Random.Range(0,ZombieSounds.instance.moans.Length))]);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(7,12));
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         
         nav.updateRotation=true;
         if (Vector3.Distance(transform.position,player.transform.position)<=stoppingDistance)
@@ -74,6 +87,7 @@ public class ZombieMotor : MonoBehaviour {
         mayAttack=false;
         animator.SetTrigger("Attack");
         StartCoroutine(GetDamage());
+        source.PlayOneShot(ZombieSounds.instance.attacks[(UnityEngine.Random.Range(0, ZombieSounds.instance.attacks.Length))]);
         yield return new WaitForSeconds(attackSpeed);
         mayAttack=true;
     }
@@ -82,16 +96,19 @@ public class ZombieMotor : MonoBehaviour {
     {
         health-=dmg;
         print(health);
-        if(health<=0)
+        if(health<=0 && GetComponent<RagdollZombie>().isRegularMesh==false)
         {
-
+            source.PlayOneShot(ZombieSounds.instance.deaths[(UnityEngine.Random.Range(0, ZombieSounds.instance.deaths.Length))]);
+            StopAllCoroutines();
+            FindObjectOfType<CurrentPlayerData>().zombiesKilled++;
             GetComponent<RagdollZombie>().ChangeToRegularMesh();
         }
     }
 
     private IEnumerator GetDamage()
     {
+        print("lel" + Time.time);
         yield return new WaitForSeconds(1f);
-        //PlayerGetDamagebruh
+        FindObjectOfType<PlayerStats>().GetHit(damage);
     }
 }

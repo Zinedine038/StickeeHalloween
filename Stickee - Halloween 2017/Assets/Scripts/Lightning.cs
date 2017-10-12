@@ -14,15 +14,23 @@ public class Lightning : MonoBehaviour
 	{
 		source = GetComponent<AudioSource> ();
 		light = GetComponent<Light> ();
-		StartCoroutine (LightningFlash (Random.Range(1,3)));
 	}
 
-	private void StrikeSingle()
+    public void Stop()
+    {
+        StopAllCoroutines();
+    }
+
+	public IEnumerator StrikeSingle()
 	{
+        LightningStrikeAudio(singleStrikes[Random.Range(0, singleStrikes.Length)]);
+        float strikeIntensity = 25;
+        light.intensity = strikeIntensity;
+        yield return new WaitForSeconds(Random.Range(0.02f,0.05f));
+        light.intensity=0;
+    }
 
-	}
-
-	private IEnumerator DoubleStrike(bool small)
+    private IEnumerator DoubleStrike(bool small)
 	{
 		if (!small) 
 		{
@@ -41,7 +49,7 @@ public class Lightning : MonoBehaviour
 		source.PlayOneShot(sound);
 	}
 
-	private IEnumerator LightningFlash(float chaos)
+	public IEnumerator LightningFlash(float chaos)
 	{
 		yield return new WaitForSeconds (5);
 		LightningStrikeAudio (singleStrikes [Random.Range (0, singleStrikes.Length)]);
@@ -55,7 +63,7 @@ public class Lightning : MonoBehaviour
 			light.intensity = 0;
 			yield return new WaitForSeconds (Random.Range (0.02f, 0.05f));
 		}
-				StartCoroutine (LightningFlash (Random.Range(1,3)));
+		StartCoroutine (LightningFlash (Random.Range(1,3)));
 	}
 
 }

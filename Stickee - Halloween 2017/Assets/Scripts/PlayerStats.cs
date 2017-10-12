@@ -17,11 +17,16 @@ public class PlayerStats : MonoBehaviour
     public void GetHit(float damage)
     {
         playerHealth -= damage;
-        GetComponent<AudioSource>().PlayOneShot(hitSound);
+        //GetComponent<AudioSource>().PlayOneShot(hitSound);
+        if(playerHealth<=0)
+        {
+            Die();
+        }
     }
 
     public void Die()
     {
-        //Like.. die or something
+        GameManager.instance.GameOver();
+        //Save Score
     }
 }

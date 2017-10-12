@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
+using UnityEngine.UI;
 
 public enum Difficulty
 {
@@ -24,6 +25,8 @@ public class SpawnManager : MonoBehaviour
     public bool roofSpawnUnlocked = false;
     public bool crawlerSpawnUnlocked = false;
 
+    private bool spawningPaused;
+
     [Header("SpawnPoints")]
     public Transform spawnPointOne;
     public Transform spawnPointTwo;
@@ -41,33 +44,36 @@ public class SpawnManager : MonoBehaviour
 
     private int zombiesSpawned;
 
-    private void Start()
+    public GameObject menuCanvas;
+    public Lightning lightning;
+
+    public void PauseSpawning()
     {
-        InitializeGame();
+        spawningPaused=true;
     }
 
-    private void Update()
+    public void ResumeSpawning()
     {
-        //TODO: FOR TESTING PURPOSES REMOVE BEFORE BUILD
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            List<Transform> locs = new List<Transform>();
-            locs.Add(spawnPointOne);
-            locs.Add(spawnPointThree);
-            if (secondSpawnUnlocked)
-            {
-                locs.Add(spawnPointTwo);
-            }
-            if (roofSpawnUnlocked)
-            {
-                locs.Add(spawnPointRoof);
-            }
-            Spawn(difficulty, ChooseSpawn(locs));
-        }
+        spawningPaused=false;
     }
 
-    private void InitializeGame()
+    public void StopSpawning()
     {
+        StopAllCoroutines();
+    }
+
+    public void ResetSpawner()
+    {
+        zombiesSpawned=0;
+        roofSpawnUnlocked=false;
+        crawlerSpawnUnlocked=false;
+    }
+
+    public IEnumerator InitializeGame()
+    {
+        StartCoroutine(lightning.LightningFlash(UnityEngine.Random.Range(1, 3)));
+        StartCoroutine(lightning.StrikeSingle());
+        yield return new WaitForSeconds(5f);
         difficulty = GameManager.instance.difficulty;
         switch (difficulty)
         {
@@ -86,10 +92,15 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+
     private IEnumerator StartSpawningRythmExtrme()
     {
         while (true)
         {
+            while(spawningPaused)
+            {
+                yield return null;
+            }
             List<Transform> locs = new List<Transform>();
             locs.Add(spawnPointOne);
             locs.Add(spawnPointThree);
@@ -113,6 +124,10 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
+            while (spawningPaused)
+            {
+                yield return null;
+            }
             List<Transform> locs = new List<Transform>();
             locs.Add(spawnPointOne);
             locs.Add(spawnPointThree);
@@ -132,6 +147,10 @@ public class SpawnManager : MonoBehaviour
     {
         while(true)
         {
+            while (spawningPaused)
+            {
+                yield return null;
+            }
             List<Transform> locs = new List<Transform>();
             locs.Add(spawnPointOne);
             locs.Add(spawnPointThree);

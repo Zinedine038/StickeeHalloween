@@ -23,7 +23,6 @@ public class Bullet : MonoBehaviour {
     void OnCollisionEnter(Collision other)
 	{
 		GameObject impactParticle;
-        Destroy(gameObject);
         if (other.gameObject.transform.tag=="BodyPart" && !other.gameObject.GetComponent<BodyPart>().isDead)
         {
             impactParticle = Instantiate(bloodParticle, transform.position, other.transform.rotation);
@@ -37,7 +36,7 @@ public class Bullet : MonoBehaviour {
             //AudioSource source = impactParticle.AddComponent<AudioSource>();
             //source.PlayOneShot(woodSFX);
         }
-
 		Destroy (impactParticle, 2);
+        DestroyImmediate(gameObject);
 	}
 }

@@ -17,7 +17,7 @@ public class NerfGun : MonoBehaviour {
     public int maxClip = 8;
     bool empty = false;
     public AudioClip reloadSound;
-
+    public ParticleSystem part;
     // Use this for initialization
     void Start () 
 	{
@@ -32,6 +32,7 @@ public class NerfGun : MonoBehaviour {
 	{
         if(!empty)
         {
+            part.Play();
             anim.SetTrigger("Fire");
             source.PlayOneShot(gunShot);
             Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
