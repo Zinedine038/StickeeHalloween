@@ -22,19 +22,24 @@ public class GameManager : MonoBehaviour
     public GameObject roofLight;
     public AudioClip roofSound;
     public AudioSource source;
+    public AudioSource pitchedSource;
     public SpawnManager spawnManager;
     public GameObject player;
-    public Rigidbody doorRB;
-    public Collider doorCollider;
     public AudioClip gameOverSound;
-
     public GameObject roofPrefab;
+    public GameObject clown;
+    public Transform clownPosition;
+    public AudioClip spookyClownMusic;
+    public AudioClip creaking;
+    private CurrentPlayerData currentData;
+    private bool lightningFinished;
+    public GameObject rotatingLight;
+    public GameObject pointedLight;
     [Header("UI")]
     public CanvasGroup gameOverScreen;
     public CanvasGroup nameEnterScreen;
     public CanvasGroup menuCanvas;
     public TextMeshProUGUI scoreCounter;
-    private CurrentPlayerData currentData;
 
     private void Start()
     {
@@ -43,10 +48,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(FridgeEvent());
-        }
+
     }
 
     #region Initializations
@@ -108,7 +110,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void NameConfirmed()
-    { 
+    {
+        FindObjectOfType<CurrentPlayerData>().name= FindObjectOfType<CurrentPlayerData>().nameText.text;
         StartCoroutine(spawnManager.InitializeGame());
         StartCoroutine(FadeOutNameInput());
     }
@@ -189,10 +192,36 @@ public class GameManager : MonoBehaviour
         //TODO Destroy Ripper!
         //Spawn Clown
         //Second gun!!!!
+        foreach (RagdollZombie rg in FindObjectsOfType<RagdollZombie>())
+        {
+            rg.ChangeToRegularMesh();
+        }
         spawnManager.PauseSpawning();
         spawnManager.lightning.Stop();
         StartCoroutine(ChaosLightning());
-        yield return null;
+        lightningFinished=false;
+        while(!lightningFinished)
+        {
+            yield return null;
+        }
+        pitchedSource.PlayOneShot(spookyClownMusic);
+        StartCoroutine(FindObjectOfType<FridgeDoor>().CreakDoor());
+        source.PlayOneShot(creaking);
+        pointedLight.SetActive(true);
+        yield return new WaitForSeconds(10);
+        FindObjectOfType<FridgeDoor>().mayCreak=false;
+        StartCoroutine(spawnManager.lightning.VeryIntenseSingleStrike());
+        yield return new WaitForSeconds(0.02f);
+        switch (difficulty)
+        {
+            case Difficulty.BloodAndBrokenBones:
+                clown.GetComponent<Clown>().hp=300;
+                break;
+            case Difficulty.DeathMarch:
+                clown.GetComponent<Clown>().hp=350;
+                break;
+        }
+        Instantiate(clown,clownPosition.position,clown.transform.rotation);
     }
 
     private IEnumerator ChaosLightning()
@@ -202,6 +231,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(spawnManager.lightning.StrikeSingle());
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.3f,1f));
         }
+        lightningFinished = true;
     }
     #endregion
 

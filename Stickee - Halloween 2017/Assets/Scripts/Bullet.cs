@@ -30,6 +30,12 @@ public class Bullet : MonoBehaviour {
             source.PlayOneShot(bloodSFX);
             other.transform.parent.GetComponent<ZombieMotor>().TakeDamage(damage);
         }
+        else if(other.gameObject.transform.tag=="Clown")
+        {
+            //dofunnyclownthings
+            impactParticle = Instantiate(bloodParticle, transform.position, other.transform.rotation);
+            FindObjectOfType<Clown>().GetHit(damage);   
+        }
         else
         {
             impactParticle = Instantiate(woodParticle, transform.position, other.transform.rotation);
@@ -37,6 +43,6 @@ public class Bullet : MonoBehaviour {
             //source.PlayOneShot(woodSFX);
         }
 		Destroy (impactParticle, 2);
-        DestroyImmediate(gameObject);
+        Destroy(gameObject);
 	}
 }

@@ -101,6 +101,10 @@ public class ZombieMotor : MonoBehaviour {
             source.PlayOneShot(ZombieSounds.instance.deaths[(UnityEngine.Random.Range(0, ZombieSounds.instance.deaths.Length))]);
             StopAllCoroutines();
             FindObjectOfType<CurrentPlayerData>().zombiesKilled++;
+            if (FindObjectOfType<CurrentPlayerData>().zombiesKilled==10)
+            {
+                GameManager.instance.StartCoroutine(GameManager.instance.FridgeEvent());
+            }
             GetComponent<RagdollZombie>().ChangeToRegularMesh();
         }
     }

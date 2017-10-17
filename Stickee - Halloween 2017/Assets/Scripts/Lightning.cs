@@ -30,6 +30,16 @@ public class Lightning : MonoBehaviour
         light.intensity=0;
     }
 
+    public IEnumerator VeryIntenseSingleStrike()
+    {
+        print("veryintensestrike");
+        LightningStrikeAudio(singleStrikes[Random.Range(0, singleStrikes.Length)]);
+        float strikeIntensity = 100;
+        light.intensity = strikeIntensity;
+        yield return new WaitForSeconds(Random.Range(0.1f, 0.2f));
+        light.intensity = 0;
+    }
+
     private IEnumerator DoubleStrike(bool small)
 	{
 		if (!small) 

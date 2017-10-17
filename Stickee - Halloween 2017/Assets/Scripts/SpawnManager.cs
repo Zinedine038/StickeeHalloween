@@ -52,8 +52,9 @@ public class SpawnManager : MonoBehaviour
         spawningPaused=true;
     }
 
-    public void ResumeSpawning()
+    public IEnumerator ResumeSpawning()
     {
+        yield return new WaitForSeconds(5f);
         spawningPaused=false;
     }
 
@@ -73,7 +74,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(lightning.LightningFlash(UnityEngine.Random.Range(1, 3)));
         StartCoroutine(lightning.StrikeSingle());
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(25f);
         difficulty = GameManager.instance.difficulty;
         switch (difficulty)
         {
@@ -99,6 +100,7 @@ public class SpawnManager : MonoBehaviour
         {
             while(spawningPaused)
             {
+                print("ayy lmao");
                 yield return null;
             }
             List<Transform> locs = new List<Transform>();
@@ -149,6 +151,7 @@ public class SpawnManager : MonoBehaviour
         {
             while (spawningPaused)
             {
+                print("ayy lmao");
                 yield return null;
             }
             List<Transform> locs = new List<Transform>();
@@ -286,15 +289,15 @@ public class SpawnManager : MonoBehaviour
         switch (difficulty)
         {
             case Difficulty.Wuss:
-                return GenerateNumberBySpawnedNumber(5,10);
+                return GenerateNumberBySpawnedNumber(easy.minSpawnInterval,easy.maxSpawnInterval);
             case Difficulty.BringItOn:
-                return GenerateNumberBySpawnedNumber(3,10);
+                return GenerateNumberBySpawnedNumber(medium.minSpawnInterval,medium.maxSpawnInterval);
             case Difficulty.BloodAndBrokenBones:
-                return GenerateNumberBySpawnedNumber(3, 7);
+                return GenerateNumberBySpawnedNumber(hard.minSpawnInterval, 7);
             case Difficulty.DeathMarch:
                 return GenerateNumberBySpawnedNumber(1,5);
         }
-        return 0;
+        return 0;     
     }
 
     private float GenerateNumberBySpawnedNumber(float min, float max)
@@ -326,5 +329,7 @@ public class ZombieStats
     public float maxSpeed;
     public int damage;
     public float attackInterval;
+    public float minSpawnInterval;
+    public float maxSpawnInterval;
 }
 }
