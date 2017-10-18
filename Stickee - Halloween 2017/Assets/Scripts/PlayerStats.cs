@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour
     public void Die()
     {
         GameManager.instance.GameOver();
+        GameManager.instance.PlayerDied();
         //Save Score
     }
 }

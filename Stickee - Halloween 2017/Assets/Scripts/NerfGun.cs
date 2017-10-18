@@ -26,9 +26,12 @@ public class NerfGun : MonoBehaviour {
 		vrtkInteract.InteractableObjectUsed += Fire;
 	}
 	
+    public void PickUp()
+    {
+        source.PlayOneShot(reloadSound);
+    }
 
-
-	public void Fire(object o, InteractableObjectEventArgs e)
+    public void Fire(object o, InteractableObjectEventArgs e)
 	{
         if(!empty)
         {

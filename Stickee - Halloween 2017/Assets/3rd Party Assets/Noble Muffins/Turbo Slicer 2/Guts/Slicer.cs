@@ -55,14 +55,17 @@ namespace NobleMuffins.TurboSlicer
             if (suppressUntilContactCeases.Contains(other.gameObject) == false)
             {
                 ISliceable sliceable = other.GetComponent(typeof(ISliceable)) as ISliceable;
-
-                if (sliceable != null)
+                if(other.transform.parent.GetComponent<ZombieMotor>()!=null)
                 {
-                    other.transform.parent.GetComponent<RagdollZombie>().ChangeToRegularMesh();
-                    instantiatedBlood = Instantiate(blood,transform.position, Quaternion.Euler((transform.rotation.eulerAngles + new Vector3(90,0,0)))  );
-                    Vector3 point = other.ClosestPointOnBounds(positionInWorldSpace);
+                    if (sliceable != null && !other.transform.parent.GetComponent<ZombieMotor>().sliced)
+                    {
+                        other.transform.parent.GetComponent<ZombieMotor>().sliced = true;
+                        other.transform.parent.GetComponent<ZombieMotor>().TakeSliceDamage(999);
+                        instantiatedBlood = Instantiate(blood, transform.position, Quaternion.Euler((transform.rotation.eulerAngles + new Vector3(90, 0, 0))));
+                        Vector3 point = other.ClosestPointOnBounds(positionInWorldSpace);
 
-                    pendingSlices.Enqueue(new PendingSlice(point, sliceable));
+                        pendingSlices.Enqueue(new PendingSlice(point, sliceable));
+                    }
                 }
             }
         }

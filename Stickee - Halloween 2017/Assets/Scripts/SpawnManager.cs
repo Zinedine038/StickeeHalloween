@@ -74,7 +74,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(lightning.LightningFlash(UnityEngine.Random.Range(1, 3)));
         StartCoroutine(lightning.StrikeSingle());
-        yield return new WaitForSeconds(25f);
+        yield return new WaitForSeconds(15f);
         difficulty = GameManager.instance.difficulty;
         switch (difficulty)
         {
@@ -106,10 +106,7 @@ public class SpawnManager : MonoBehaviour
             List<Transform> locs = new List<Transform>();
             locs.Add(spawnPointOne);
             locs.Add(spawnPointThree);
-            if (secondSpawnUnlocked)
-            {
-                locs.Add(spawnPointTwo);
-            }
+            locs.Add(spawnPointTwo);
             if (roofSpawnUnlocked)
             {
                 locs.Add(spawnPointRoof);
@@ -132,12 +129,9 @@ public class SpawnManager : MonoBehaviour
             }
             List<Transform> locs = new List<Transform>();
             locs.Add(spawnPointOne);
+            locs.Add(spawnPointTwo);
             locs.Add(spawnPointThree);
-            if (secondSpawnUnlocked)
-            {
-                locs.Add(spawnPointTwo);
-            }
-            if(roofSpawnUnlocked)
+            if (roofSpawnUnlocked)
             {
                 locs.Add(spawnPointRoof);
             }

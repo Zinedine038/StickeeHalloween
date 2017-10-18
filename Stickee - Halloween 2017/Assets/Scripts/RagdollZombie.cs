@@ -39,11 +39,13 @@ public class RagdollZombie : MonoBehaviour
                 filter.sharedMesh = mesh;
                 meshObj.GetComponent<BodyPart>().isDead=true;
                 RagDoll(meshObj.GetComponent<Rigidbody>());
+                Destroy(meshObj.GetComponent<NobleMuffins.TurboSlicer.Examples.SoundWhenSliced>());
                 Destroy(meshObj.GetComponent<Sliceable>(),1.5f);
                 Destroy(meshObj.GetComponent<Collider>(),1.5f);
                 Destroy(meshObj,3f);
             }
         }
+        Destroy(this.gameObject,3f);
     }
 
     private void RagDoll(Rigidbody rigidbody)

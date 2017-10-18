@@ -8,6 +8,8 @@ public class ZombieSounds : MonoBehaviour
 	public AudioClip[] attacks;
     public AudioClip[] moans;
     public AudioClip[] deaths;
+    public AudioClip[] zombieSlicedDeaths;
+    public AudioClip zombieSliced;
     private void Start()
     {
         instance=this;

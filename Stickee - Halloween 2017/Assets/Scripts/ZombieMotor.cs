@@ -16,6 +16,8 @@ public class ZombieMotor : MonoBehaviour {
     public int damage;
     public int health;
     public AudioSource source;
+    public bool sliced;
+    int zombiesReqFridge = 5;
     // Use this for initialization
     void Start () {
         player = GameManager.instance.player;
@@ -101,7 +103,25 @@ public class ZombieMotor : MonoBehaviour {
             source.PlayOneShot(ZombieSounds.instance.deaths[(UnityEngine.Random.Range(0, ZombieSounds.instance.deaths.Length))]);
             StopAllCoroutines();
             FindObjectOfType<CurrentPlayerData>().zombiesKilled++;
-            if (FindObjectOfType<CurrentPlayerData>().zombiesKilled==10)
+            if (FindObjectOfType<CurrentPlayerData>().zombiesKilled==zombiesReqFridge)
+            {
+                GameManager.instance.StartCoroutine(GameManager.instance.FridgeEvent());
+            }
+            GetComponent<RagdollZombie>().ChangeToRegularMesh();
+        }
+    }
+
+    public void TakeSliceDamage(int dmg)
+    {
+        health -= dmg;
+        print(health);
+        source.PlayOneShot(ZombieSounds.instance.zombieSliced);
+        if (health <= 0 && GetComponent<RagdollZombie>().isRegularMesh == false)
+        {
+            source.PlayOneShot(ZombieSounds.instance.zombieSlicedDeaths[(UnityEngine.Random.Range(0, ZombieSounds.instance.zombieSlicedDeaths.Length))]);
+            StopAllCoroutines();
+            FindObjectOfType<CurrentPlayerData>().zombiesKilled++;
+            if (FindObjectOfType<CurrentPlayerData>().zombiesKilled == zombiesReqFridge)
             {
                 GameManager.instance.StartCoroutine(GameManager.instance.FridgeEvent());
             }

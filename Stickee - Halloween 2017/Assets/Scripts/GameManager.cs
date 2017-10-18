@@ -40,7 +40,18 @@ public class GameManager : MonoBehaviour
     public CanvasGroup nameEnterScreen;
     public CanvasGroup menuCanvas;
     public TextMeshProUGUI scoreCounter;
-
+    public VRTK.VRTK_ObjectAutoGrab leftAutoGrab;
+    public VRTK.VRTK_ObjectAutoGrab rightAutoGrab;
+    public GameObject leftTip;
+    public GameObject rightTip;
+    public AudioClip explosionSound;
+    public Ripper ripper;
+    public GameObject ripperExplosion;
+    public GunPickupCE gpce;
+    [HideInInspector]
+    public GameObject instantiatedGun;
+    public GameObject gunPrefab;
+    public GameObject ripperPrefab;
     private void Start()
     {
         currentData = FindObjectOfType<CurrentPlayerData>();
@@ -56,21 +67,34 @@ public class GameManager : MonoBehaviour
     {
         difficulty = Difficulty.Wuss;
         StartCoroutine(FadeOutDifficulty());
+        leftTip = FindTip(leftAutoGrab.gameObject);
+        rightTip = FindTip(leftAutoGrab.gameObject);
     }
     public void StartMedium()
     {
         difficulty = Difficulty.BringItOn;
         StartCoroutine(FadeOutDifficulty());
+        leftTip = FindTip(leftAutoGrab.gameObject);
+        rightTip = FindTip(leftAutoGrab.gameObject);
     }
     public void StartHard()
     {
         difficulty = Difficulty.BloodAndBrokenBones;
         StartCoroutine(FadeOutDifficulty());
+        leftTip = FindTip(leftAutoGrab.gameObject);
+        rightTip = FindTip(leftAutoGrab.gameObject);
     }
     public void StartExtreme()
     {
         difficulty = Difficulty.DeathMarch;
         StartCoroutine(FadeOutDifficulty());
+        leftTip = FindTip(leftAutoGrab.gameObject);
+        rightTip = FindTip(leftAutoGrab.gameObject);
+    }
+
+    private GameObject FindTip(GameObject autoGrab)
+    {
+        return autoGrab.transform.parent.Find("Model").GetComponentInChildren<Rigidbody>().gameObject;
     }
     #endregion
 
@@ -114,6 +138,11 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<CurrentPlayerData>().name= FindObjectOfType<CurrentPlayerData>().nameText.text;
         StartCoroutine(spawnManager.InitializeGame());
         StartCoroutine(FadeOutNameInput());
+        leftAutoGrab.objectToGrab.transform.rotation = leftTip.transform.rotation;
+        rightAutoGrab.objectToGrab.transform.rotation = rightTip.transform.rotation;
+        leftAutoGrab.enabled=true;
+        rightAutoGrab.enabled=true;
+        rightAutoGrab.objectToGrab.GetComponent<NerfGun>().PickUp();
     }
 
     private IEnumerator FadeOutNameInput()
@@ -147,11 +176,34 @@ public class GameManager : MonoBehaviour
     {
         source.Stop();
         FindObjectOfType<CurrentPlayerData>().PlayerDied();
+
+        FindObjectOfType<FridgeDoor>().transform.eulerAngles=new Vector3(90,0,0);
+        pointedLight.SetActive(false);
         StartCoroutine(RestartScene());
+    }
+
+    public void PlayerDied()
+    {
+        if(leftAutoGrab.objectToGrab.gameObject!=null)
+        {
+            GameObject left = leftAutoGrab.objectToGrab.gameObject;
+            leftAutoGrab.interactGrab.ForceRelease();
+            Destroy(left);
+        }
+        GameObject right = rightAutoGrab.objectToGrab.gameObject;
+        rightAutoGrab.interactGrab.ForceRelease();
+        leftAutoGrab.enabled = false;
+        rightAutoGrab.enabled = false;
+        Destroy(right);
     }
 
     private IEnumerator RestartScene()
     {
+        var newRipper = Instantiate(ripperPrefab).GetComponent<Ripper>();//instantiate ripper
+        var newGun = Instantiate(gunPrefab).GetComponent<VRTK.VRTK_InteractableObject>();//instantiate gun
+        ripper=newRipper;
+        leftAutoGrab.objectToGrab=newRipper;
+        rightAutoGrab.objectToGrab = newGun;
         spawnManager.ResetSpawner();
         roofLight = Instantiate(roofPrefab); 
         gameOverScreen.DOFade(0, 3f);
@@ -229,9 +281,30 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < 10; i++)
         {
             StartCoroutine(spawnManager.lightning.StrikeSingle());
+            if(i==5)
+            {
+                DestroyRipper();
+            }
             yield return new WaitForSeconds(UnityEngine.Random.Range(0.3f,1f));
         }
         lightningFinished = true;
+    }
+
+    private void DestroyRipper()
+    {
+        ripper.DropRipper();
+        Instantiate(ripperExplosion,ripper.transform.position,ripper.transform.rotation);
+        leftAutoGrab.enabled=false;
+        Destroy(ripper.gameObject);
+        source.PlayOneShot(explosionSound);
+    }
+
+    public IEnumerator HandleSecondGun()
+    {
+        leftAutoGrab.objectToGrab=instantiatedGun.GetComponent<VRTK.VRTK_InteractableObject>();
+        yield return new WaitForSeconds(3);
+        leftAutoGrab.objectToGrab.GetComponent<NerfGun>().PickUp();
+        leftAutoGrab.enabled=true;
     }
     #endregion
 

@@ -13,6 +13,11 @@ public class Ripper : VRTK_InteractableObject {
 		anim.speed = 0;
 	}
 
+    public void DropRipper()
+    {
+        ForceReleaseGrab();
+    }
+
 	public override void OnInteractableObjectGrabbed (InteractableObjectEventArgs e)
 	{
 		base.OnInteractableObjectGrabbed (e);
@@ -24,8 +29,11 @@ public class Ripper : VRTK_InteractableObject {
 	{
 		base.OnInteractableObjectUngrabbed (e);
 		StopAllCoroutines ();
-		StartCoroutine (RampDownSpeed ());
-	}
+        if(gameObject.activeSelf==true)
+        {
+            StartCoroutine(RampDownSpeed());
+        }
+    }
 
 	IEnumerator RampUpSpeed()
 	{

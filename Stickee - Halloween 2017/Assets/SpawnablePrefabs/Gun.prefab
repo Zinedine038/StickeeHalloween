@@ -105,9 +105,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4937482770430332}
+  - component: {fileID: 114537302306347628}
   - component: {fileID: 65059503271132196}
   - component: {fileID: 54562503164156838}
-  - component: {fileID: 114537302306347628}
   - component: {fileID: 114844166011057442}
   - component: {fileID: 82196949997291788}
   m_Layer: 0
@@ -332,7 +332,6 @@ GameObject:
   - component: {fileID: 33422167688144262}
   - component: {fileID: 23327687592384582}
   - component: {fileID: 95081849722920098}
-  - component: {fileID: 65636361646994536}
   m_Layer: 0
   m_Name: NerfGun2
   m_TagString: Untagged
@@ -481,7 +480,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1590819372312372}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.631, y: -0.393, z: 0.258}
+  m_LocalPosition: {x: -3.54, y: -0.47, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4443874802571212}
@@ -493,15 +492,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319358366095848}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0.000000029802322, w: 0.7071068}
-  m_LocalPosition: {x: -2.6089392, y: 0.14720882, z: 1.8891757}
+  m_LocalRotation: {x: 0.7071095, y: -0.00000020115394, z: -0.000004075467, w: 0.70710415}
+  m_LocalPosition: {x: -2.5060284, y: 0.014612127, z: 1.6861012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4551877347626056}
   - {fileID: 4355216120327042}
   m_Father: {fileID: 4937482770430332}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 179.999}
 --- !u!4 &4487853616324906
 Transform:
   m_ObjectHideFlags: 1
@@ -560,13 +559,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1274464232393990}
-  m_LocalRotation: {x: -0.08876199, y: 0.9342593, z: -0.3446232, w: -0.022711197}
-  m_LocalPosition: {x: -5.71, y: 0, z: 1.61}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalRotation: {x: -0.08875856, y: 0.34462065, z: 0.93426067, w: -0.022708945}
+  m_LocalPosition: {x: -5.51, y: -0.2645832, z: 1.5388956}
+  m_LocalScale: {x: 20.00002, y: 20.00003, z: 20.00003}
   m_Children: []
   m_Father: {fileID: 4937482770430332}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 40.388, y: 178.59001, z: -11.373}
+  m_LocalEulerAnglesHint: {x: 219.784, y: 526.338, z: 7.748993}
 --- !u!4 &4747725288548138
 Transform:
   m_ObjectHideFlags: 1
@@ -586,8 +585,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1930704559066506}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0.000000029802322, w: 0.7071068}
-  m_LocalPosition: {x: -2.6089392, y: 0.14720882, z: 1.8891757}
+  m_LocalRotation: {x: 0.7071095, y: -0.00000020115394, z: -0.000004075467, w: 0.70710415}
+  m_LocalPosition: {x: -2.5060284, y: 0.014612127, z: 1.6861012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4594924811802158}
@@ -605,15 +604,15 @@ Transform:
   - {fileID: 4236253769736836}
   m_Father: {fileID: 4937482770430332}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 179.999}
 --- !u!4 &4937482770430332
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1289840361644142}
-  m_LocalRotation: {x: -0.6123707, y: 0.61237425, z: 0.35355213, w: 0.35355464}
-  m_LocalPosition: {x: 1.901, y: 0.621, z: 2.76}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.603, y: 0.8113, z: 3.888}
   m_LocalScale: {x: 0.070576996, y: 0.070576966, z: 0.070576996}
   m_Children:
   - {fileID: 4604901397883756}
@@ -621,7 +620,7 @@ Transform:
   - {fileID: 4867702243731432}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -60.000004, y: 179.99901, z: -89.999}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4994323926824046
 Transform:
   m_ObjectHideFlags: 1
@@ -1346,23 +1345,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1289840361644142}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65636361646994536
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1930704559066506}
-  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.136953, y: 2.7057233, z: 0.74837965}
-  m_Center: {x: 1.828635, y: -1.1583416, z: 0.21529554}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82196949997291788
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1522,14 +1509,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3abaf4521bf2344ea21ed3020b98eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableWhenIdle: 1
+  disableWhenIdle: 0
   touchHighlightColor: {r: 0, g: 0, b: 0, a: 0}
   allowedTouchControllers: 0
   ignoredColliders: []
   isGrabbable: 1
   holdButtonToGrab: 0
   stayGrabbedOnTeleport: 1
-  validDrop: 1
+  validDrop: 0
   grabOverrideButton: 7
   allowedGrabControllers: 0
   grabAttachMechanicScript: {fileID: 0}
@@ -1538,7 +1525,7 @@ MonoBehaviour:
   holdButtonToUse: 1
   useOnlyIfGrabbed: 1
   pointerActivatesUseAction: 0
-  useOverrideButton: 4
+  useOverrideButton: 3
   allowedUseControllers: 0
   usingState: 0
 --- !u!114 &114844166011057442
@@ -1619,7 +1606,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1777175229
+  randomSeed: -1679551034
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4775,7 +4762,7 @@ ParticleSystemRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

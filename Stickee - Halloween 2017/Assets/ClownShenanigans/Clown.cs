@@ -26,9 +26,6 @@ public class Clown : MonoBehaviour {
     {
         source = GetComponent<AudioSource>();
         StartCoroutine(ClownLogic());
-        Ripper ripper = FindObjectOfType<Ripper>();
-        Instantiate(ripperExplodeParticle,ripper.transform.position,ripper.transform.rotation);
-        Destroy(ripper.gameObject);
         target =GameManager.instance.player.transform;
     }
 
@@ -131,7 +128,6 @@ public class Clown : MonoBehaviour {
 
     IEnumerator Death()
     {
-        //Spawn Second gun :D with a cool particle
         gunSpot=GameObject.Find("AkimboGunSpot").transform;
         animator.SetTrigger("Death");
         source.PlayOneShot(death);
@@ -139,12 +135,12 @@ public class Clown : MonoBehaviour {
         Destroy(agent);
         yield return new WaitForSeconds(4f);
         Instantiate(gunparticle, gunSpot.transform.position, gunSpot.transform.rotation);
-        Instantiate(gun, gunSpot.transform.position, gunSpot.transform.rotation);
+        GameManager.instance.instantiatedGun = Instantiate(gun, gunSpot.transform.position, gunSpot.transform.rotation);
+        GameManager.instance.StartCoroutine(GameManager.instance.HandleSecondGun());
         GameManager.instance.spawnManager.StartCoroutine(GameManager.instance.spawnManager.ResumeSpawning());
         GameManager.instance.pointedLight.SetActive(false);
         GameManager.instance.spawnManager.lightning.StartCoroutine(GameManager.instance.spawnManager.lightning.LightningFlash(UnityEngine.Random.Range(1,3)));
         Destroy(gameObject);
-        yield return new WaitForSeconds(3f);
     }
 
     private void FaceTarget()
