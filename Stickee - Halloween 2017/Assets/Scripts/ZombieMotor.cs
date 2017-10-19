@@ -17,7 +17,7 @@ public class ZombieMotor : MonoBehaviour {
     public int health;
     public AudioSource source;
     public bool sliced;
-    int zombiesReqFridge = 5;
+    int zombiesReqFridge = 30;
     // Use this for initialization
     void Start () {
         player = GameManager.instance.player;

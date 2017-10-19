@@ -73,12 +73,13 @@ public class Clown : MonoBehaviour {
 
     public void GetHit(int damage)
     {
-        if(hp>0)
+        if (hp > 0)
         {
-            if (!phaseTwoStarted && !phaseOneEnded)
+            if (!animatedWalk || !startedWalking)
             {
-                StopCoroutine(ClownLogic());
-                StartCoroutine(PhaseTwo());
+                source.Stop();
+                StopAllCoroutines();
+                Provoked();
             }
             hp -= damage;
             if (hp <= 0)
@@ -89,6 +90,14 @@ public class Clown : MonoBehaviour {
             }
         }
 
+    }
+
+    private void Provoked()
+    {
+        animator.SetTrigger("Provoked");
+        animatedWalk = true;
+        startedWalking = true;
+        source.PlayOneShot(scream);
     }
 
     IEnumerator Attack()

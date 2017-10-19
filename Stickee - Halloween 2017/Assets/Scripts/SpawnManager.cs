@@ -74,7 +74,7 @@ public class SpawnManager : MonoBehaviour
     {
         StartCoroutine(lightning.LightningFlash(UnityEngine.Random.Range(1, 3)));
         StartCoroutine(lightning.StrikeSingle());
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(17.5f);
         difficulty = GameManager.instance.difficulty;
         switch (difficulty)
         {

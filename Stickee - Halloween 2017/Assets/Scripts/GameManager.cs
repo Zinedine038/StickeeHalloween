@@ -57,9 +57,20 @@ public class GameManager : MonoBehaviour
         currentData = FindObjectOfType<CurrentPlayerData>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-
+        if(leftAutoGrab.objectToGrab!=null)
+        {
+            leftAutoGrab.objectToGrab.transform.localPosition = Vector3.zero;
+            leftAutoGrab.objectToGrab.transform.localEulerAngles = Vector3.zero;
+            Destroy(leftAutoGrab.objectToGrab.GetComponent<FixedJoint>());
+        }
+        if (rightAutoGrab.objectToGrab != null)
+        {
+            rightAutoGrab.objectToGrab.transform.localPosition = Vector3.zero;
+            rightAutoGrab.objectToGrab.transform.localEulerAngles = Vector3.zero;
+            Destroy(rightAutoGrab.objectToGrab.GetComponent<FixedJoint>());
+        }
     }
 
     #region Initializations
@@ -89,7 +100,7 @@ public class GameManager : MonoBehaviour
         difficulty = Difficulty.DeathMarch;
         StartCoroutine(FadeOutDifficulty());
         leftTip = FindTip(leftAutoGrab.gameObject);
-        rightTip = FindTip(leftAutoGrab.gameObject);
+        rightTip = FindTip(rightAutoGrab.gameObject);
     }
 
     private GameObject FindTip(GameObject autoGrab)
@@ -138,10 +149,10 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<CurrentPlayerData>().name= FindObjectOfType<CurrentPlayerData>().nameText.text;
         StartCoroutine(spawnManager.InitializeGame());
         StartCoroutine(FadeOutNameInput());
-        leftAutoGrab.objectToGrab.transform.rotation = leftTip.transform.rotation;
-        rightAutoGrab.objectToGrab.transform.rotation = rightTip.transform.rotation;
         leftAutoGrab.enabled=true;
         rightAutoGrab.enabled=true;
+        leftAutoGrab.objectToGrab.transform.parent=leftTip.transform;
+        rightAutoGrab.objectToGrab.transform.parent = rightTip.transform;
         rightAutoGrab.objectToGrab.GetComponent<NerfGun>().PickUp();
     }
 
@@ -302,9 +313,10 @@ public class GameManager : MonoBehaviour
     public IEnumerator HandleSecondGun()
     {
         leftAutoGrab.objectToGrab=instantiatedGun.GetComponent<VRTK.VRTK_InteractableObject>();
-        yield return new WaitForSeconds(3);
+        yield return null;
         leftAutoGrab.objectToGrab.GetComponent<NerfGun>().PickUp();
         leftAutoGrab.enabled=true;
+        leftAutoGrab.objectToGrab.transform.parent = leftTip.transform;
     }
     #endregion
 
