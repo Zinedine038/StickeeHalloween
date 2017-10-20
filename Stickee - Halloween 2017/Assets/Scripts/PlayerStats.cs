@@ -8,16 +8,18 @@ public class PlayerStats : MonoBehaviour
     public float playerHealth;
     public AudioClip hitSound;
     public int score;
+    AudioSource source;
     // Use this for initialization
     void Start()
     {
         score=0;
+        source=GetComponent<AudioSource>();
     }    
 
     public void GetHit(float damage)
     {
         playerHealth -= damage;
-        //GetComponent<AudioSource>().PlayOneShot(hitSound);
+        GetComponent<AudioSource>().PlayOneShot(hitSound);
         if(playerHealth<=0)
         {
             Die();

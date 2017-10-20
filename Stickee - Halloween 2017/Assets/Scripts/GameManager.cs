@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     public VRTK.VRTK_ObjectAutoGrab rightAutoGrab;
     public GameObject leftTip;
     public GameObject rightTip;
-    public AudioClip explosionSound;
+    public AudioClip explosionSound; 
     public Ripper ripper;
     public GameObject ripperExplosion;
     public GunPickupCE gpce;
@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     public GameObject instantiatedGun;
     public GameObject gunPrefab;
     public GameObject ripperPrefab;
+    public AudioClip gunExplosionSFX;
+
     private void Start()
     {
         currentData = FindObjectOfType<CurrentPlayerData>();
@@ -79,21 +81,21 @@ public class GameManager : MonoBehaviour
         difficulty = Difficulty.Wuss;
         StartCoroutine(FadeOutDifficulty());
         leftTip = FindTip(leftAutoGrab.gameObject);
-        rightTip = FindTip(leftAutoGrab.gameObject);
+        rightTip = FindTip(rightAutoGrab.gameObject);
     }
     public void StartMedium()
     {
         difficulty = Difficulty.BringItOn;
         StartCoroutine(FadeOutDifficulty());
         leftTip = FindTip(leftAutoGrab.gameObject);
-        rightTip = FindTip(leftAutoGrab.gameObject);
+        rightTip = FindTip(rightAutoGrab.gameObject);
     }
     public void StartHard()
     {
         difficulty = Difficulty.BloodAndBrokenBones;
         StartCoroutine(FadeOutDifficulty());
         leftTip = FindTip(leftAutoGrab.gameObject);
-        rightTip = FindTip(leftAutoGrab.gameObject);
+        rightTip = FindTip(rightAutoGrab.gameObject);
     }
     public void StartExtreme()
     {
@@ -312,6 +314,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator HandleSecondGun()
     {
+        source.PlayOneShot(gunExplosionSFX);
         leftAutoGrab.objectToGrab=instantiatedGun.GetComponent<VRTK.VRTK_InteractableObject>();
         yield return null;
         leftAutoGrab.objectToGrab.GetComponent<NerfGun>().PickUp();

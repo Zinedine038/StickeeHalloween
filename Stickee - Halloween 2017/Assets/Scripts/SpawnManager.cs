@@ -100,7 +100,6 @@ public class SpawnManager : MonoBehaviour
         {
             while(spawningPaused)
             {
-                print("ayy lmao");
                 yield return null;
             }
             List<Transform> locs = new List<Transform>();
@@ -145,7 +144,6 @@ public class SpawnManager : MonoBehaviour
         {
             while (spawningPaused)
             {
-                print("ayy lmao");
                 yield return null;
             }
             List<Transform> locs = new List<Transform>();
@@ -161,7 +159,19 @@ public class SpawnManager : MonoBehaviour
     }
     private IEnumerator StartSpawningRythmEasy()
     {
-        throw new NotImplementedException();
+        while (true)
+        {
+            while (spawningPaused)
+            {
+                yield return null;
+            }
+            List<Transform> locs = new List<Transform>();
+            locs.Add(spawnPointOne);
+            locs.Add(spawnPointThree);
+            locs.Add(spawnPointTwo);
+            Spawn(difficulty, ChooseSpawn(locs));
+            yield return new WaitForSeconds(DecideSpawnInterval(difficulty));
+        }
     }
 
     private Transform ChooseSpawn(List<Transform> possibleLocations)
@@ -253,7 +263,12 @@ public class SpawnManager : MonoBehaviour
     }
     private void SpawnEasyZombie(ZombieStats stats, Transform location)
     {
-
+        ZombieMotor zm = normalZombie.GetComponent<ZombieMotor>();
+        zm.health = stats.health;
+        zm.speed = DecideMotorSpeed(stats.startingSpeed, stats.maxSpeed);
+        zm.damage = stats.damage;
+        zm.attackSpeed = stats.attackInterval;
+        Instantiate(normalZombie, location.transform.position, normalZombie.transform.rotation);
     }
 
 
